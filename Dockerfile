@@ -58,10 +58,15 @@ RUN apt-get install -y default-jdk
 # add start sh
 ADD ./install/python_install.sh /opt/install/python_install.sh
 ADD ./install/boost_install.sh /opt/install/boost_install.sh
+ADD ./install/gtest_install.sh /opt/install/gtest_install.sh
 RUN \
 	chmod 555 /opt/install/python_install.sh && \
+	/opt/install/python_install.sh
+RUN \
 	chmod 555 /opt/install/boost_install.sh && \
-	/opt/install/python_install.sh && \
 	/opt/install/boost_install.sh
+RUN \
+	chmod 555 /opt/install/gtest_install.sh && \
+	/opt/install/gtest_install.sh
 
 CMD ["tail","-f","/dev/null"]
